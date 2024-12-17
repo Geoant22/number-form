@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0" />
+    <title>web excersice</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: rgb(255, 255, 255);
+      }
+      h1 {
+        font-size: 50px;
+      }
+
+      .form-container {
+        background: white;
+        height: 250px;
+        width: 400px;
+        padding-top: 0px;
+        padding-left: 30px;
+        padding-bottom: 20px;
+        border-radius: 15px;
+        border-style: ridge;
+        border-width: 0, 1;
+      }
+
+      .form-container h1 {
+        margin-bottom: 35px;
+        color: rgb(132, 0, 255);
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 100;
+      }
+
+      .form-container h2 {
+        margin-bottom: 15px;
+        color: rgb(2, 0, 0);
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 100;
+      }
+
+      .form-container input {
+        width: 90%;
+        padding: 6px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .form-container button {
+        font-family: Arial, Helvetica, sans-serif;
+        width: 20%;
+        padding: 3px;
+        background-color: #ffffff;
+        color: rgb(108, 54, 233);
+        border: solid;
+        border-radius: 10px;
+        border-color: blueviolet;
+        font-size: 1em;
+        font-weight: bold;
+        cursor: pointer;
+        position: relative;
+        margin-left: 295px;
+        margin-top: 7px;
+      }
+
+      .form-container button:hover {
+        background-color: #ffffff;
+      }
+
+      .error-message {
+        color: black;
+        font-size: 1em;
+        text-align: center;
+      }
+
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      input[type="number"] {
+        appearance: textfield;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <h1>Form</h1>
+      <h2>Number</h2>
+      <form id="numberForm">
+        <input
+          type="number"
+          id="numberInput"
+          placeholder="Please enter a number "
+          required
+        />
+        <button type="submit">Submit</button>
+      </form>
+      <div class="error-message" id="errorMessage"></div>
+    </div>
+
+    <script>
+      const form = document.getElementById("numberForm");
+      const input = document.getElementById("numberInput");
+      const errorMessage = document.getElementById("errorMessage");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const number = parseFloat(input.value);
+
+        if (isNaN(number) || number < 10) {
+          errorMessage.textContent = "Please enter a number higher than 10.";
+          form.reset();
+        } else {
+          errorMessage.textContent = "";
+          alert(`You entered :  ${number}`);
+          form.reset();
+        }
+      });
+    </script>
+  </body>
+</html>
